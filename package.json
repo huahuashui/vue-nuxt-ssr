@@ -1,18 +1,25 @@
 {
-  "name": "vue-nuxt",
+  "name": "vue-nuxt-ssr",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "yarn lint:js"
+    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js --interpreter babel-node",
+    "restart": "cross-env NODE_ENV=production pm2 restart ecosystem.config.js --interpreter babel-node",
+    "stop": "pm2 stop ecosystem.config.js",
+    "local": "cross-env NODE_ENV=development nuxt",
+    "dev": "cross-env CREATE_ENV=dev nuxt build && cross-env NODE_ENV=production pm2 start ecosystem.config.js --interpreter babel-node",
+    "dev:h": "nuxt",
+    "build:h": "nuxt build",
+    "start:h": "nuxt start",
+    "generate:h": "nuxt generate",
+    "lint:js:h": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:h": "yarn lint:js"
   },
   "dependencies": {
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "cross-env": "^7.0.3",
+    "nuxt": "^2.15.7",
+    "pm2": "^5.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
@@ -22,6 +29,10 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.12.1"
+    "eslint-plugin-vue": "^7.12.1",
+    "less": "^4.1.1",
+    "less-loader": "7.3.0",
+    "nuxt-property-decorator": "^2.9.1",
+    "vuex-class": "^0.3.2"
   }
 }

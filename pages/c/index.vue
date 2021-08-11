@@ -1,6 +1,6 @@
 <template>
-  <div class="m-home">
-    首页
+  <div class="m-classify">
+    分类页
   </div>
 </template>
 <script lang="ts">

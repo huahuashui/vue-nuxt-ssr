@@ -1,6 +1,6 @@
 <template>
-  <div class="m-home">
-    首页
+  <div class="m-file">
+    资料页
   </div>
 </template>
 <script lang="ts">
