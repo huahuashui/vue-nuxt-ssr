@@ -1,4 +1,9 @@
 export default {
+  // 保存当前所处环境的标识
+  env: {
+    CREATE_ENV: process.env.CREATE_ENV
+  },
+  // 服务IP端口
   server: {
     host: '0.0.0.0',
     port: 3020
@@ -53,14 +58,38 @@ export default {
         href: '/favicon.ico'
       }
     ],
-    // 第三方样式库
+    // 一些全局引入的js
     script: [
-      // {src: '/js/jquery-1.8.0.min.js', type: 'text/javascript', charset: 'utf-8'},
-      // {src: '/js/rem.js', type: 'text/javascript', charset: 'utf-8'},
-      // {src: '/js/iaskWebSdk.js', type: 'text/javascript', charset: 'utf-8'},
-      // {src: '/js/baiduStatistic.js', type: 'text/javascript', charset: 'utf-8'},
-      // {src: '/js/TCaptcha.js', type: 'text/javascript', charset: 'utf-8'},
-      // {src: '/js/meiQiaInit.js', type: 'text/javascript', charset: 'utf-8'}
+      {
+        src: '/js/jquery-1.8.0.min.js',
+        type: 'text/javascript',
+        charset: 'utf-8'
+      },
+      {
+        src: '/js/iaskWebSdk.js',
+        type: 'text/javascript',
+        charset: 'utf-8'
+      },
+      {
+        src: '/js/rem.js',
+        type: 'text/javascript',
+        charset: 'utf-8'
+      },
+      {
+        src: '/js/baiduStatistic.js',
+        type: 'text/javascript',
+        charset: 'utf-8'
+      },
+      {
+        src: '/js/TCaptcha.js',
+        type: 'text/javascript',
+        charset: 'utf-8'
+      },
+      {
+        src: '/js/meiQiaInit.js',
+        type: 'text/javascript',
+        charset: 'utf-8'
+      }
     ]
   },
 
@@ -70,7 +99,24 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {
+      src: '@/plugins/axios.js',
+      ssr: true
+    },
+    {
+      src: '@/plugins/ishare-web-sdk.js',
+      ssr: false
+    },
+    {
+      src: '@/plugins/vconsole.js',
+      ssr: false
+    },
+    {
+      src: '@/plugins/vue-clipboard2.js',
+      ssr: false
+    }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -82,7 +128,9 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    '@nuxtjs/axios'
+  ],
   styleResources: {
     less: './assets/styles/**/*.less'
   },

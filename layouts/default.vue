@@ -18,14 +18,13 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component({
   components: {}
 })
 export default class AppPage extends Vue {
   protected mounted () {
-    console.log('this', this)
   }
 }
 </script>

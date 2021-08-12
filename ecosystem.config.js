@@ -21,13 +21,8 @@ module.exports = {
       log_date_format: 'YYYY-MM-DD HH:mm:ss',
       max_restarts: 30,
       autorestart: false,
-      max_memory_restart: "2G",
-      append_env_to_name: true,
-      // 配置环境变量，这里的环境变量要与nuxt里边的`package.json`文件的变量相同
-      env_dev: {
-        NODE_ENV: 'production',
-        MODE: 'dev',
-      },
+      max_memory_restart: '2G',
+      append_env_to_name: true
     }
   ]
-};
+}
